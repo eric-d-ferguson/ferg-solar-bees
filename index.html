@@ -72,18 +72,18 @@
   .bee.b3 { top: 40%; left: -40px; animation: fly1 30s linear infinite; animation-delay: 9s; font-size: 20px; }
 
   @keyframes fly1 {
-    0%   { transform: translateX(0) translateY(0) scaleX(1); }
-    49%  { transform: translateX(102vw) translateY(-30px) scaleX(1); }
-    50%  { transform: translateX(102vw) translateY(-30px) scaleX(-1); }
-    99%  { transform: translateX(0) translateY(40px) scaleX(-1); }
-    100% { transform: translateX(0) translateY(0) scaleX(1); }
+    0%   { transform: translateX(0) translateY(0) scaleX(-1); }
+    49%  { transform: translateX(102vw) translateY(-30px) scaleX(-1); }
+    50%  { transform: translateX(102vw) translateY(-30px) scaleX(1); }
+    99%  { transform: translateX(0) translateY(40px) scaleX(1); }
+    100% { transform: translateX(0) translateY(0) scaleX(-1); }
   }
   @keyframes fly2 {
-    0%   { transform: translateX(0) translateY(0) scaleX(1); }
-    49%  { transform: translateX(105vw) translateY(50px) scaleX(1); }
-    50%  { transform: translateX(105vw) translateY(50px) scaleX(-1); }
-    99%  { transform: translateX(0) translateY(-40px) scaleX(-1); }
-    100% { transform: translateX(0) translateY(0) scaleX(1); }
+    0%   { transform: translateX(0) translateY(0) scaleX(-1); }
+    49%  { transform: translateX(105vw) translateY(50px) scaleX(-1); }
+    50%  { transform: translateX(105vw) translateY(50px) scaleX(1); }
+    99%  { transform: translateX(0) translateY(-40px) scaleX(1); }
+    100% { transform: translateX(0) translateY(0) scaleX(-1); }
   }
 
   /* ---------- hero (solar sunrise) ---------- */
@@ -239,6 +239,30 @@
   .contact-row a { color: var(--honey-deep); font-weight: 600; text-decoration: none; }
   .contact-row a:hover { text-decoration: underline; }
 
+  /* meet the herd — photo placeholders */
+  .herd {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 14px;
+    margin-top: 14px;
+  }
+  .herd-tile {
+    aspect-ratio: 1 / 1;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 2rem;
+    color: var(--honey-deep);
+    background: var(--honey-pale);
+    border: 2px dashed var(--comb-line);
+    border-radius: 12px;
+    opacity: 0.85;
+  }
+  @media (max-width: 480px) {
+    .herd { grid-template-columns: repeat(3, 1fr); gap: 8px; }
+    .herd-tile { font-size: 1.5rem; }
+  }
+
   /* progress hive */
   .progress-label { font-size: 0.9rem; color: var(--ink-soft); margin-bottom: 6px; }
   .progress {
@@ -299,6 +323,17 @@
       <h2>🌻 The Honey Hobby</h2>
       <p>From flower to frame to jar — every batch is tended by hand. Here's a taste of what's coming to this page:</p>
       <p class="soft">• The seasons of the hive &nbsp;•&nbsp; Harvest &amp; bottling &nbsp;•&nbsp; Honey varieties &nbsp;•&nbsp; Why local honey matters</p>
+    </section>
+
+    <section class="card">
+      <h2>🐝 Meet the Herd</h2>
+      <p>The hardworking residents of the apiary — the ones doing all the real work.</p>
+      <div class="herd">
+        <div class="herd-tile">📷</div>
+        <div class="herd-tile">📷</div>
+        <div class="herd-tile">📷</div>
+      </div>
+      <p class="soft" style="text-align:center; margin-top:12px">Pictures incoming 🍯</p>
     </section>
 
     <section class="card">
