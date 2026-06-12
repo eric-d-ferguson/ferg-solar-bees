@@ -1,0 +1,359 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Coming Soon — Local Honey</title>
+
+<!-- ============================================================= -->
+<!--  EDIT ME: everything you'd want to change lives in this block  -->
+<!--  Swap in real details and the whole page updates.             -->
+<!-- ============================================================= -->
+<script>
+  const SITE = {
+    beekeeperName: "Mike Ferguson",       // e.g. "Jim Ferguson"
+    apiaryName: "Ferg's Solar Bees",      // the name of his honey operation
+    tagline: "Raw, local honey — straight from the backyard hive.",
+    town: "New Haven, MO",
+    email: "beekprnh@gmail.com",          // shown on the Contact card
+    phone: "",                            // optional, e.g. "(555) 123-4567" — leave "" to hide
+    launchNote: "Bee patient — we're still building the hive!",
+    // The About story — each string is its own paragraph.
+    story: [
+      "After years in the city, Mike and his family traded the bustle of St. Louis for a few quiet acres of Missouri countryside in New Haven — room to breathe, and room to start something new in retirement.",
+      "It began on a lark: one hive, just to make the most of the new land. One became two, two became four, and a backyard experiment quietly grew into a genuine passion.",
+      "Today those hives produce raw, local honey that Mike shares with friends and family — and sells to anyone with a sweet tooth and an appreciation for the real thing.",
+    ],
+  };
+</script>
+
+<style>
+  :root {
+    --honey-deep:   #b8860b;
+    --honey:        #f4a400;
+    --honey-light:  #ffcf4d;
+    --honey-pale:   #fff7e0;
+    --wax:          #fdf3d8;
+    --comb-line:    #f0d68a;
+    --ink:          #4a3508;
+    --ink-soft:     #7a5e22;
+    --bee-black:    #2b2118;
+  }
+
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+
+  html { scroll-behavior: smooth; }
+
+  body {
+    font-family: "Segoe UI", system-ui, -apple-system, sans-serif;
+    color: var(--ink);
+    background-color: var(--wax);
+    /* honeycomb pattern */
+    background-image:
+      radial-gradient(circle at 50% 0, transparent 11px, var(--comb-line) 12px, transparent 13px),
+      radial-gradient(circle at 0 18px, transparent 11px, var(--comb-line) 12px, transparent 13px),
+      radial-gradient(circle at 100% 18px, transparent 11px, var(--comb-line) 12px, transparent 13px);
+    background-size: 36px 36px;
+    line-height: 1.6;
+    overflow-x: hidden;
+  }
+
+  /* ---------- floating bees ---------- */
+  .bee {
+    position: fixed;
+    font-size: 28px;
+    z-index: 5;
+    pointer-events: none;
+    will-change: transform;
+    filter: drop-shadow(1px 2px 1px rgba(0,0,0,0.2));
+  }
+  .bee.b1 { top: 18%; left: -40px; animation: fly1 18s linear infinite; }
+  .bee.b2 { top: 62%; left: -40px; animation: fly2 24s linear infinite; animation-delay: 4s; }
+  .bee.b3 { top: 40%; left: -40px; animation: fly1 30s linear infinite; animation-delay: 9s; font-size: 20px; }
+
+  @keyframes fly1 {
+    0%   { transform: translateX(0) translateY(0) scaleX(1); }
+    49%  { transform: translateX(102vw) translateY(-30px) scaleX(1); }
+    50%  { transform: translateX(102vw) translateY(-30px) scaleX(-1); }
+    99%  { transform: translateX(0) translateY(40px) scaleX(-1); }
+    100% { transform: translateX(0) translateY(0) scaleX(1); }
+  }
+  @keyframes fly2 {
+    0%   { transform: translateX(0) translateY(0) scaleX(1); }
+    49%  { transform: translateX(105vw) translateY(50px) scaleX(1); }
+    50%  { transform: translateX(105vw) translateY(50px) scaleX(-1); }
+    99%  { transform: translateX(0) translateY(-40px) scaleX(-1); }
+    100% { transform: translateX(0) translateY(0) scaleX(1); }
+  }
+
+  /* ---------- hero (solar sunrise) ---------- */
+  .hero {
+    position: relative;
+    text-align: center;
+    padding: 64px 20px 50px;
+    overflow: hidden;
+    background: linear-gradient(180deg,
+      #ffb347 0%, #ffc861 22%, #ffdd8e 48%, #ffeec0 72%, var(--wax) 100%);
+  }
+
+  /* the sun + rays sit behind the bee mascot */
+  .solar {
+    position: relative;
+    width: 200px;
+    height: 200px;
+    margin: 0 auto 2px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  .rays {
+    position: absolute;
+    width: 260px;
+    height: 260px;
+    border-radius: 50%;
+    background: repeating-conic-gradient(from 0deg,
+      rgba(255,233,150,0.85) 0deg 5deg, transparent 5deg 18deg);
+    -webkit-mask: radial-gradient(circle, transparent 40%, #000 44%, #000 70%, transparent 80%);
+            mask: radial-gradient(circle, transparent 40%, #000 44%, #000 70%, transparent 80%);
+    animation: spin 50s linear infinite;
+  }
+  .sun-glow {
+    position: absolute;
+    width: 160px;
+    height: 160px;
+    border-radius: 50%;
+    background: radial-gradient(circle,
+      #fff6d6 0%, var(--honey-light) 38%, rgba(244,164,0,0.55) 62%, rgba(244,164,0,0) 75%);
+    animation: pulse 3.2s ease-in-out infinite;
+  }
+  @keyframes spin  { to { transform: rotate(360deg); } }
+  @keyframes pulse {
+    0%, 100% { transform: scale(1);    opacity: 0.92; }
+    50%      { transform: scale(1.07); opacity: 1; }
+  }
+
+  .mascot {
+    position: relative;
+    z-index: 2;
+    font-size: 84px;
+    display: inline-block;
+    animation: buzz 0.4s ease-in-out infinite alternate;
+  }
+  @keyframes buzz {
+    from { transform: translateY(0) rotate(-4deg); }
+    to   { transform: translateY(-6px) rotate(4deg); }
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .rays, .sun-glow, .mascot, .bee { animation: none; }
+  }
+
+  .badge {
+    display: inline-block;
+    margin: 18px 0 10px;
+    padding: 8px 22px;
+    background: var(--bee-black);
+    color: var(--honey-light);
+    font-weight: 700;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    font-size: 13px;
+    border-radius: 30px;
+    border: 2px dashed var(--honey);
+  }
+
+  h1 {
+    font-size: clamp(2.2rem, 6vw, 4rem);
+    color: var(--honey-deep);
+    text-shadow: 2px 2px 0 var(--honey-light);
+    margin: 8px 0;
+  }
+
+  .tagline {
+    font-size: clamp(1rem, 2.5vw, 1.3rem);
+    color: var(--ink-soft);
+    max-width: 600px;
+    margin: 6px auto 0;
+  }
+
+  .launch-note {
+    margin-top: 22px;
+    font-style: italic;
+    color: var(--honey-deep);
+    font-size: 1.05rem;
+  }
+
+  /* drippy divider */
+  .drip {
+    height: 40px;
+    background: var(--honey);
+    position: relative;
+  }
+  .drip::after {
+    content: "";
+    position: absolute;
+    top: 100%; left: 0; right: 0;
+    height: 24px;
+    background:
+      radial-gradient(circle at 12px -2px, var(--honey) 12px, transparent 13px),
+      radial-gradient(circle at 48px -8px, var(--honey) 10px, transparent 11px),
+      radial-gradient(circle at 84px -2px, var(--honey) 14px, transparent 15px);
+    background-size: 96px 24px;
+    background-repeat: repeat-x;
+  }
+
+  /* ---------- content cards ---------- */
+  .wrap {
+    max-width: 760px;
+    margin: 0 auto;
+    padding: 50px 20px 30px;
+  }
+
+  .card {
+    background: #fff;
+    border: 2px solid var(--comb-line);
+    border-radius: 16px;
+    padding: 28px 30px;
+    margin: 22px 0;
+    box-shadow: 0 6px 0 rgba(184,134,11,0.15);
+  }
+
+  .card h2 {
+    color: var(--honey-deep);
+    font-size: 1.6rem;
+    margin-bottom: 10px;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+  }
+  .card p { color: var(--ink); margin-bottom: 8px; }
+  .soft { color: var(--ink-soft); font-size: 0.95rem; }
+
+  .contact-row {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    margin: 10px 0;
+    font-size: 1.1rem;
+  }
+  .contact-row a { color: var(--honey-deep); font-weight: 600; text-decoration: none; }
+  .contact-row a:hover { text-decoration: underline; }
+
+  /* progress hive */
+  .progress-label { font-size: 0.9rem; color: var(--ink-soft); margin-bottom: 6px; }
+  .progress {
+    height: 22px;
+    background: var(--wax);
+    border: 2px solid var(--comb-line);
+    border-radius: 12px;
+    overflow: hidden;
+  }
+  .progress-fill {
+    height: 100%;
+    width: 0;
+    background: repeating-linear-gradient(
+      45deg, var(--honey), var(--honey) 10px, var(--honey-light) 10px, var(--honey-light) 20px);
+    border-radius: 10px;
+    transition: width 1.6s ease-out;
+  }
+
+  footer {
+    text-align: center;
+    padding: 30px 20px 50px;
+    color: var(--ink-soft);
+    font-size: 0.9rem;
+  }
+  footer .heart { color: #c0392b; }
+</style>
+</head>
+<body>
+
+  <!-- buzzing visitors -->
+  <div class="bee b1">🐝</div>
+  <div class="bee b2">🐝</div>
+  <div class="bee b3">🐝</div>
+
+  <header class="hero">
+    <div class="solar">
+      <div class="rays"></div>
+      <div class="sun-glow"></div>
+      <div class="mascot">🐝</div>
+    </div>
+    <div><span class="badge">🚧 Under Construction 🚧</span></div>
+    <h1 id="apiaryName">Ferguson Family Apiary</h1>
+    <p class="tagline" id="tagline">Raw, local honey — straight from the backyard hive.</p>
+    <p class="launch-note" id="launchNote">Bee patient — we're still building the hive!</p>
+  </header>
+
+  <div class="drip"></div>
+
+  <main class="wrap">
+
+    <section class="card">
+      <h2>🍯 About the Beekeeper</h2>
+      <div id="aboutBlurb"></div>
+      <p class="soft">More of the story is on the way — including the seasons of the hive and what makes this honey special.</p>
+    </section>
+
+    <section class="card">
+      <h2>🌻 The Honey Hobby</h2>
+      <p>From flower to frame to jar — every batch is tended by hand. Here's a taste of what's coming to this page:</p>
+      <p class="soft">• The seasons of the hive &nbsp;•&nbsp; Harvest &amp; bottling &nbsp;•&nbsp; Honey varieties &nbsp;•&nbsp; Why local honey matters</p>
+    </section>
+
+    <section class="card">
+      <h2>📬 Get in Touch</h2>
+      <p>Want a jar, or just curious about the bees? Reach out:</p>
+      <div class="contact-row">✉️ <a id="emailLink" href="#">email</a></div>
+      <div class="contact-row" id="phoneRow" style="display:none">📞 <a id="phoneLink" href="#">phone</a></div>
+      <div class="contact-row" id="townRow">📍 <span id="townText"></span></div>
+    </section>
+
+    <section class="card">
+      <div class="progress-label">Hive construction progress</div>
+      <div class="progress"><div class="progress-fill" id="progressFill"></div></div>
+      <p class="soft" style="margin-top:10px">The worker bees (okay, one bee 🐝) are on it.</p>
+    </section>
+
+  </main>
+
+  <footer>
+    <p>🐝 <span id="footerName">Ferguson Family Apiary</span> 🐝</p>
+    <p>Made with <span class="heart">♥</span> for the best beekeeper around.</p>
+  </footer>
+
+<script>
+  // Apply the SITE config to the page
+  document.title = "Coming Soon — " + SITE.apiaryName;
+  document.getElementById("apiaryName").textContent = SITE.apiaryName;
+  document.getElementById("tagline").textContent = SITE.tagline;
+  document.getElementById("launchNote").textContent = SITE.launchNote;
+  document.getElementById("footerName").textContent = SITE.apiaryName;
+  document.getElementById("townText").textContent = SITE.town;
+
+  const aboutEl = document.getElementById("aboutBlurb");
+  SITE.story.forEach(para => {
+    const p = document.createElement("p");
+    p.textContent = para;
+    aboutEl.appendChild(p);
+  });
+
+  const emailLink = document.getElementById("emailLink");
+  emailLink.href = "mailto:" + SITE.email;
+  emailLink.textContent = SITE.email;
+
+  if (SITE.phone && SITE.phone.trim() !== "") {
+    const phoneRow = document.getElementById("phoneRow");
+    const phoneLink = document.getElementById("phoneLink");
+    phoneLink.href = "tel:" + SITE.phone.replace(/[^0-9+]/g, "");
+    phoneLink.textContent = SITE.phone;
+    phoneRow.style.display = "flex";
+  }
+
+  // animate the progress bar after load
+  window.addEventListener("load", () => {
+    setTimeout(() => { document.getElementById("progressFill").style.width = "35%"; }, 400);
+  });
+</script>
+</body>
+</html>
