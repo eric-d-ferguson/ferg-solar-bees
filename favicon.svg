@@ -1,39 +1,45 @@
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64">
-  <!-- Ferg's Solar Bees — honey sun + bee -->
-  <defs>
-    <radialGradient id="sun" cx="50%" cy="45%" r="60%">
-      <stop offset="0%" stop-color="#ffcf4d"/>
-      <stop offset="70%" stop-color="#f4a400"/>
-      <stop offset="100%" stop-color="#b8860b"/>
-    </radialGradient>
-  </defs>
+  <!-- Ferg's Solar Bees — vintage engraved honeybee, traced from the jar label -->
+  <!-- cream label background -->
+  <rect width="64" height="64" rx="12" fill="#f7f3e8"/>
 
-  <!-- sun rays -->
-  <g fill="#f4a400">
-    <g id="ray">
-      <polygon points="32,1 35,10 29,10"/>
+  <g fill="#1a1a17" stroke="#1a1a17" stroke-linejoin="round" stroke-linecap="round">
+    <!-- antennae -->
+    <path d="M30 14 C25 9 22 7 20 8" fill="none" stroke-width="1.4"/>
+    <path d="M34 14 C39 9 42 7 44 8" fill="none" stroke-width="1.4"/>
+    <circle cx="19.5" cy="7.8" r="1.1"/>
+    <circle cx="44.5" cy="7.8" r="1.1"/>
+
+    <!-- head -->
+    <circle cx="32" cy="15" r="4"/>
+
+    <!-- wings (outlined, airy engraving look) -->
+    <g fill="#f7f3e8" stroke-width="1.4">
+      <ellipse cx="19" cy="24" rx="10.5" ry="5.5" transform="rotate(-32 19 24)"/>
+      <ellipse cx="45" cy="24" rx="10.5" ry="5.5" transform="rotate(32 45 24)"/>
+      <ellipse cx="21" cy="31" rx="6.5" ry="3.6" transform="rotate(-20 21 31)"/>
+      <ellipse cx="43" cy="31" rx="6.5" ry="3.6" transform="rotate(20 43 31)"/>
     </g>
-    <use href="#ray" transform="rotate(45 32 32)"/>
-    <use href="#ray" transform="rotate(90 32 32)"/>
-    <use href="#ray" transform="rotate(135 32 32)"/>
-    <use href="#ray" transform="rotate(180 32 32)"/>
-    <use href="#ray" transform="rotate(225 32 32)"/>
-    <use href="#ray" transform="rotate(270 32 32)"/>
-    <use href="#ray" transform="rotate(315 32 32)"/>
-  </g>
 
-  <!-- sun disc -->
-  <circle cx="32" cy="32" r="23" fill="url(#sun)"/>
+    <!-- legs -->
+    <g fill="none" stroke-width="1.1">
+      <path d="M28 33 C24 35 22 38 21 41"/>
+      <path d="M36 33 C40 35 42 38 43 41"/>
+    </g>
 
-  <!-- bee -->
-  <g>
-    <!-- wings -->
-    <ellipse cx="25" cy="21" rx="7.5" ry="5" fill="#ffffff" opacity="0.92" stroke="#2b2118" stroke-width="1" transform="rotate(-28 25 21)"/>
-    <ellipse cx="39" cy="21" rx="7.5" ry="5" fill="#ffffff" opacity="0.92" stroke="#2b2118" stroke-width="1" transform="rotate(28 39 21)"/>
-    <!-- body -->
-    <ellipse cx="32" cy="34" rx="11" ry="9" fill="#2b2118"/>
-    <!-- stripes -->
-    <path d="M22 31 h20 v3.2 h-20 z" fill="#f4a400"/>
-    <path d="M23 37 h18 v3.2 h-18 z" fill="#f4a400"/>
+    <!-- thorax -->
+    <ellipse cx="32" cy="22" rx="5.5" ry="5"/>
+
+    <!-- abdomen: striped teardrop pointing down -->
+    <path d="M25 28
+             C25 24 39 24 39 28
+             C39 38 36 50 32 53
+             C28 50 25 38 25 28 Z"/>
+    <!-- cream stripes carved across the abdomen -->
+    <g stroke="#f7f3e8" stroke-width="2.2" fill="none">
+      <path d="M26 33 H38"/>
+      <path d="M27 39 H37"/>
+      <path d="M29 45 H35"/>
+    </g>
   </g>
 </svg>
