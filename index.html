@@ -17,6 +17,7 @@
     town: "New Haven, MO",
     email: "beekprnh@gmail.com",          // shown on the Contact card
     phone: "",                            // optional, e.g. "(555) 123-4567" — leave "" to hide
+    venmo: "https://venmo.com/code?user_id=4138205318218829961&created=1784332975", // optional pay link — leave "" to hide
     launchNote: "Bee patient — we're still building the hive!",
     // The About story — each string is its own paragraph.
     story: [
@@ -341,6 +342,7 @@
       <p>Want a jar, or just curious about the bees? Reach out:</p>
       <div class="contact-row">✉️ <a id="emailLink" href="#">email</a></div>
       <div class="contact-row" id="phoneRow" style="display:none">📞 <a id="phoneLink" href="#">phone</a></div>
+      <div class="contact-row" id="venmoRow" style="display:none">💸 <a id="venmoLink" href="#" target="_blank" rel="noopener">Pay with Venmo</a></div>
       <div class="contact-row" id="townRow">📍 <span id="townText"></span></div>
     </section>
 
@@ -383,6 +385,13 @@
     phoneLink.href = "tel:" + SITE.phone.replace(/[^0-9+]/g, "");
     phoneLink.textContent = SITE.phone;
     phoneRow.style.display = "flex";
+  }
+
+  if (SITE.venmo && SITE.venmo.trim() !== "") {
+    const venmoRow = document.getElementById("venmoRow");
+    const venmoLink = document.getElementById("venmoLink");
+    venmoLink.href = SITE.venmo;
+    venmoRow.style.display = "flex";
   }
 
   // animate the progress bar after load
