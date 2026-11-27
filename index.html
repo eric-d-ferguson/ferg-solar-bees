@@ -3,7 +3,21 @@
 <head>
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-<title>Coming Soon — Local Honey</title>
+<title>Coming Soon — Ferg's Solar Bees</title>
+<meta name="description" content="Raw, local honey from Mike Ferguson's backyard hives in New Haven, Missouri." />
+
+<!-- Link previews (texts, Facebook, etc.). These sites don't run the page's
+     JavaScript, so this text is written out here rather than taken from SITE. -->
+<meta property="og:type" content="website" />
+<meta property="og:url" content="https://fergssolarbees.com/" />
+<meta property="og:site_name" content="Ferg's Solar Bees" />
+<meta property="og:title" content="Ferg's Solar Bees" />
+<meta property="og:description" content="Raw, local honey from Mike Ferguson's backyard hives in New Haven, Missouri." />
+<meta property="og:image" content="https://fergssolarbees.com/images/share-preview.jpg" />
+<meta property="og:image:width" content="1200" />
+<meta property="og:image:height" content="630" />
+<meta property="og:image:alt" content="Two bottles of Ferg's Solar Bees honey" />
+<meta name="twitter:card" content="summary_large_image" />
 <link rel="icon" href="favicon.ico" sizes="any" />
 <link rel="icon" type="image/svg+xml" href="favicon.svg" />
 <link rel="apple-touch-icon" href="favicon.svg" />
@@ -22,6 +36,17 @@
     phone: "",                            // optional, e.g. "(555) 123-4567" — leave "" to hide
     venmoHandle: "@BeekeeperNH",          // optional Venmo username — leave "" to hide
     launchNote: "Bee patient — we're still building the hive!",
+    // Honey for Sale — one line per size, in the order shown.
+    honeyForSale: [
+      { size: "½ lb jar", price: "$7" },
+      { size: "1 lb jar", price: "$12" },
+    ],
+    honeyDescription: "Raw, local honey in plastic jars with an easy squeeze top.",
+    // Extra lines under the prices. "Get in touch" becomes a link to the contact card.
+    saleNotes: [
+      "Making mead, or need more than 10 lbs? Get in touch for bulk pricing and options.",
+      "Venmo accepted. Ask about delivery options.",
+    ],
     // The About story — each string is its own paragraph.
     story: [
       "After years in the city, Mike and his family traded the bustle of St. Louis for a few quiet acres of Missouri countryside in New Haven — room to breathe, and room to start something new in retirement.",
@@ -244,28 +269,66 @@
   .contact-row a { color: var(--honey-deep); font-weight: 600; text-decoration: none; }
   .contact-row a:hover { text-decoration: underline; }
 
-  /* meet the herd — photo placeholders */
+  /* meet the herd — photos */
   .herd {
     display: grid;
-    grid-template-columns: repeat(3, 1fr);
+    grid-template-columns: repeat(2, 1fr);
     gap: 14px;
     margin-top: 14px;
   }
-  .herd-tile {
+  .herd figure { margin: 0; }
+  .herd figure.wide { grid-column: 1 / -1; }
+  .herd img {
+    display: block;
+    width: 100%;
+    height: auto;
     aspect-ratio: 1 / 1;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    font-size: 2rem;
-    color: var(--honey-deep);
-    background: var(--honey-pale);
-    border: 2px dashed var(--comb-line);
+    object-fit: cover;
+    border: 2px solid var(--comb-line);
     border-radius: 12px;
-    opacity: 0.85;
+    background: var(--honey-pale);
+  }
+  .herd figure.wide img { aspect-ratio: 2 / 1; }
+  .herd figcaption {
+    margin-top: 6px;
+    text-align: center;
+    font-size: 0.9rem;
+    color: var(--ink-soft);
   }
   @media (max-width: 480px) {
-    .herd { grid-template-columns: repeat(3, 1fr); gap: 8px; }
-    .herd-tile { font-size: 1.5rem; }
+    .herd { gap: 8px; }
+  }
+
+  /* honey for sale — prices beside the jars photo */
+  .sale {
+    display: flex;
+    gap: 24px;
+    align-items: flex-start;
+  }
+  .sale-info { flex: 1; }
+  .price-list { list-style: none; margin: 12px 0 14px; }
+  .price-list li {
+    display: flex;
+    align-items: baseline;
+    gap: 8px;
+    padding: 6px 0;
+    font-size: 1.1rem;
+  }
+  .price-list .size { font-weight: 600; }
+  .price-list .dots { flex: 1; border-bottom: 2px dotted var(--comb-line); }
+  .price-list .price { font-weight: 700; color: var(--honey-deep); }
+  .sale-notes p { margin-bottom: 6px; }
+  .sale-notes a { color: var(--honey-deep); font-weight: 600; }
+  .sale-photo {
+    width: 180px;
+    height: auto;
+    flex-shrink: 0;
+    border: 2px solid var(--comb-line);
+    border-radius: 12px;
+  }
+  @media (max-width: 560px) {
+    .sale { flex-direction: column; align-items: stretch; }
+    .sale-photo { width: 100%; max-width: 260px; margin: 0 auto; }
   }
 
   /* progress hive */
@@ -309,8 +372,8 @@
       <div class="mascot">🐝</div>
     </div>
     <div><span class="badge">🚧 Under Construction 🚧</span></div>
-    <h1 id="apiaryName">Ferguson Family Apiary</h1>
-    <p class="tagline" id="tagline">Raw, local honey — straight from the backyard hive.</p>
+    <h1 id="apiaryName">Ferg's Solar Bees</h1>
+    <p class="tagline" id="tagline">Raw, local honey — straight from rural Missouri hives.</p>
     <p class="launch-note" id="launchNote">Bee patient — we're still building the hive!</p>
   </header>
 
@@ -334,14 +397,38 @@
       <h2>🐝 Meet the Herd</h2>
       <p>The hardworking residents of the apiary — the ones doing all the real work.</p>
       <div class="herd">
-        <div class="herd-tile">📷</div>
-        <div class="herd-tile">📷</div>
-        <div class="herd-tile">📷</div>
+        <figure class="wide">
+          <img src="images/hive-yard.jpg" width="1400" height="700" loading="lazy"
+               alt="A row of colorful painted beehives beside a solar panel array, with trees behind">
+          <figcaption>Home sweet home — the hive yard, right next to the solar panels</figcaption>
+        </figure>
+        <figure>
+          <img src="images/swarm.jpg" width="900" height="900" loading="lazy"
+               alt="A large cluster of honey bees hanging beneath a swarm trap mounted on a tree">
+          <figcaption>A fresh swarm moving in</figcaption>
+        </figure>
+        <figure>
+          <img src="images/capped-frame.jpg" width="900" height="900" loading="lazy"
+               alt="A wooden frame of fully capped honeycomb held up over an uncapping bin">
+          <figcaption>A frame of capped honey, ready to extract</figcaption>
+        </figure>
       </div>
-      <p class="soft" style="text-align:center; margin-top:12px">Pictures incoming 🍯</p>
     </section>
 
     <section class="card">
+      <h2>🍯 Honey for Sale</h2>
+      <div class="sale">
+        <div class="sale-info">
+          <p id="honeyDescription"></p>
+          <ul class="price-list" id="priceList"></ul>
+          <div class="sale-notes soft" id="saleNotes"></div>
+        </div>
+        <img class="sale-photo" src="images/jars.jpg" width="720" height="959" loading="lazy"
+             alt="A half-pound and a one-pound squeeze jar of golden honey with Ferg's Solar Bees bee labels">
+      </div>
+    </section>
+
+    <section class="card" id="contact">
       <h2>📬 Get in Touch</h2>
       <p>Want a jar, or just curious about the bees? Reach out:</p>
       <div class="contact-row">✉️ <a id="emailLink" href="#">email</a></div>
@@ -359,7 +446,7 @@
   </main>
 
   <footer>
-    <p>🐝 <span id="footerName">Ferguson Family Apiary</span> 🐝</p>
+    <p>🐝 <span id="footerName">Ferg's Solar Bees</span> 🐝</p>
     <p>Made with <span class="heart">♥</span> for the best beekeeper around.</p>
   </footer>
 
@@ -377,6 +464,38 @@
     const p = document.createElement("p");
     p.textContent = para;
     aboutEl.appendChild(p);
+  });
+
+  // Honey for Sale
+  document.getElementById("honeyDescription").textContent = SITE.honeyDescription;
+
+  const priceList = document.getElementById("priceList");
+  SITE.honeyForSale.forEach(item => {
+    const li = document.createElement("li");
+    [["size", item.size], ["dots", ""], ["price", item.price]].forEach(([cls, text]) => {
+      const span = document.createElement("span");
+      span.className = cls;
+      span.textContent = text;
+      li.appendChild(span);
+    });
+    priceList.appendChild(li);
+  });
+
+  // Each note becomes a paragraph; the words "get in touch" link to the contact card.
+  const notesEl = document.getElementById("saleNotes");
+  SITE.saleNotes.forEach(note => {
+    const p = document.createElement("p");
+    note.split(/(get in touch)/i).forEach(part => {
+      if (/^get in touch$/i.test(part)) {
+        const a = document.createElement("a");
+        a.href = "#contact";
+        a.textContent = part;
+        p.appendChild(a);
+      } else {
+        p.appendChild(document.createTextNode(part));
+      }
+    });
+    notesEl.appendChild(p);
   });
 
   const emailLink = document.getElementById("emailLink");

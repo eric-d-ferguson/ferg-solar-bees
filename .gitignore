@@ -4,3 +4,6 @@
 
 # macOS
 .DS_Store
+# Full-size original photos (large, and contain phone location data).
+# Only the resized copies in images/ are published.
+photos/

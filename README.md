@@ -18,12 +18,35 @@ const SITE = {
   phone:         "",          // leave "" to hide the phone row
   venmoHandle:   "@BeekeeperNH", // leave "" to hide the Venmo row
   launchNote:    "...",
+  honeyForSale:  [ { size: "½ lb jar", price: "$7" }, ... ], // one entry per size
+  honeyDescription: "...",
+  saleNotes:     [ "line 1", "line 2" ], // "Get in touch" in a note links to the contact card
   story:         [ "paragraph 1", "paragraph 2" ], // one string per paragraph
 };
 ```
 
-To add photos to the **Meet the Herd** section, replace the `📷` tiles in the
-`.herd` grid with `<img>` tags.
+To change prices, edit the `price` values in `honeyForSale`.
+
+## Photos
+
+Published photos live in `images/`, shrunk to web size (a few hundred KB each)
+with all metadata stripped:
+
+| File | Used for |
+|---|---|
+| `hive-yard.jpg` | Meet the Herd — wide banner (2:1) |
+| `swarm.jpg`, `capped-frame.jpg` | Meet the Herd — square tiles |
+| `jars.jpg` | Honey for Sale card |
+| `share-preview.jpg` | Link-preview image (1200×630) when the site is texted or posted |
+
+Full-size originals go in `photos/`, which is git-ignored. **Don't commit phone
+photos straight from the camera**: they're several MB each and usually carry GPS
+coordinates of where they were taken. Resize and strip metadata first
+(re-saving with Pillow without `exif=` does both).
+
+The link-preview text (`og:` tags in the `<head>`) is written out by hand
+rather than read from `SITE`, because Facebook, iMessage and similar sites
+don't run the page's JavaScript. If the name or tagline changes, update both.
 
 The only other files are the site icons — `favicon.svg` (used by modern browsers
 and as the Apple touch icon) and `favicon.ico` (the legacy fallback). Both are
