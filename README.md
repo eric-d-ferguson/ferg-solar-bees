@@ -1,6 +1,6 @@
 # 🐝 Ferg's Solar Bees
 
-An "under construction" website for **Mike Ferguson's** backyard apiary in New Haven, MO — raw, local honey.
+The website for **Mike Ferguson's** backyard apiary in New Haven, MO — raw, local honey.
 
 Built as a single, self-contained `index.html` (no build step, no dependencies). A honey/bee theme with a solar-sunrise hero, in keeping with the *Solar Bees* name.
 
@@ -17,7 +17,6 @@ const SITE = {
   email:         "beekprnh@gmail.com",
   phone:         "",          // leave "" to hide the phone row
   venmoHandle:   "@BeekeeperNH", // leave "" to hide the Venmo row
-  launchNote:    "...",
   honeyForSale:  [ { size: "½ lb jar", price: "$7" }, ... ], // one entry per size
   honeyDescription: "...",
   saleNotes:     [ "line 1", "line 2" ], // "Get in touch" in a note links to the contact card
@@ -34,6 +33,7 @@ with all metadata stripped:
 
 | File | Used for |
 |---|---|
+| `hive-row.jpg` | About the Beekeeper — wide banner (2:1) |
 | `hive-yard.jpg` | Meet the Herd — wide banner (2:1) |
 | `swarm.jpg`, `capped-frame.jpg` | Meet the Herd — square tiles |
 | `jars.jpg` | Honey for Sale card |

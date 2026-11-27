@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-<title>Coming Soon — Ferg's Solar Bees</title>
+<title>Ferg's Solar Bees — Raw, Local Honey from New Haven, MO</title>
 <meta name="description" content="Raw, local honey from Mike Ferguson's backyard hives in New Haven, Missouri." />
 
 <!-- Link previews (texts, Facebook, etc.). These sites don't run the page's
@@ -35,7 +35,6 @@
     email: "beekprnh@gmail.com",          // shown on the Contact card
     phone: "",                            // optional, e.g. "(555) 123-4567" — leave "" to hide
     venmoHandle: "@BeekeeperNH",          // optional Venmo username — leave "" to hide
-    launchNote: "Bee patient — we're still building the hive!",
     // Honey for Sale — one line per size, in the order shown.
     honeyForSale: [
       { size: "½ lb jar", price: "$7" },
@@ -86,34 +85,6 @@
     background-size: 36px 36px;
     line-height: 1.6;
     overflow-x: hidden;
-  }
-
-  /* ---------- floating bees ---------- */
-  .bee {
-    position: fixed;
-    font-size: 28px;
-    z-index: 5;
-    pointer-events: none;
-    will-change: transform;
-    filter: drop-shadow(1px 2px 1px rgba(0,0,0,0.2));
-  }
-  .bee.b1 { top: 18%; left: -40px; animation: fly1 18s linear infinite; }
-  .bee.b2 { top: 62%; left: -40px; animation: fly2 24s linear infinite; animation-delay: 4s; }
-  .bee.b3 { top: 40%; left: -40px; animation: fly1 30s linear infinite; animation-delay: 9s; font-size: 20px; }
-
-  @keyframes fly1 {
-    0%   { transform: translateX(0) translateY(0) scaleX(-1); }
-    49%  { transform: translateX(102vw) translateY(-30px) scaleX(-1); }
-    50%  { transform: translateX(102vw) translateY(-30px) scaleX(1); }
-    99%  { transform: translateX(0) translateY(40px) scaleX(1); }
-    100% { transform: translateX(0) translateY(0) scaleX(-1); }
-  }
-  @keyframes fly2 {
-    0%   { transform: translateX(0) translateY(0) scaleX(-1); }
-    49%  { transform: translateX(105vw) translateY(50px) scaleX(-1); }
-    50%  { transform: translateX(105vw) translateY(50px) scaleX(1); }
-    99%  { transform: translateX(0) translateY(-40px) scaleX(1); }
-    100% { transform: translateX(0) translateY(0) scaleX(-1); }
   }
 
   /* ---------- hero (solar sunrise) ---------- */
@@ -175,21 +146,7 @@
   }
 
   @media (prefers-reduced-motion: reduce) {
-    .rays, .sun-glow, .mascot, .bee { animation: none; }
-  }
-
-  .badge {
-    display: inline-block;
-    margin: 18px 0 10px;
-    padding: 8px 22px;
-    background: var(--bee-black);
-    color: var(--honey-light);
-    font-weight: 700;
-    letter-spacing: 2px;
-    text-transform: uppercase;
-    font-size: 13px;
-    border-radius: 30px;
-    border: 2px dashed var(--honey);
+    .rays, .sun-glow, .mascot { animation: none; }
   }
 
   h1 {
@@ -204,13 +161,6 @@
     color: var(--ink-soft);
     max-width: 600px;
     margin: 6px auto 0;
-  }
-
-  .launch-note {
-    margin-top: 22px;
-    font-style: italic;
-    color: var(--honey-deep);
-    font-size: 1.05rem;
   }
 
   /* drippy divider */
@@ -268,6 +218,25 @@
   }
   .contact-row a { color: var(--honey-deep); font-weight: 600; text-decoration: none; }
   .contact-row a:hover { text-decoration: underline; }
+
+  /* wide photo at the top of a card */
+  .card-photo { margin: 4px 0 16px; }
+  .card-photo img {
+    display: block;
+    width: 100%;
+    height: auto;
+    aspect-ratio: 2 / 1;
+    object-fit: cover;
+    border: 2px solid var(--comb-line);
+    border-radius: 12px;
+    background: var(--honey-pale);
+  }
+  .card-photo figcaption {
+    margin-top: 6px;
+    text-align: center;
+    font-size: 0.9rem;
+    color: var(--ink-soft);
+  }
 
   /* meet the herd — photos */
   .herd {
@@ -331,39 +300,15 @@
     .sale-photo { width: 100%; max-width: 260px; margin: 0 auto; }
   }
 
-  /* progress hive */
-  .progress-label { font-size: 0.9rem; color: var(--ink-soft); margin-bottom: 6px; }
-  .progress {
-    height: 22px;
-    background: var(--wax);
-    border: 2px solid var(--comb-line);
-    border-radius: 12px;
-    overflow: hidden;
-  }
-  .progress-fill {
-    height: 100%;
-    width: 0;
-    background: repeating-linear-gradient(
-      45deg, var(--honey), var(--honey) 10px, var(--honey-light) 10px, var(--honey-light) 20px);
-    border-radius: 10px;
-    transition: width 1.6s ease-out;
-  }
-
   footer {
     text-align: center;
     padding: 30px 20px 50px;
     color: var(--ink-soft);
     font-size: 0.9rem;
   }
-  footer .heart { color: #c0392b; }
 </style>
 </head>
 <body>
-
-  <!-- buzzing visitors -->
-  <div class="bee b1">🐝</div>
-  <div class="bee b2">🐝</div>
-  <div class="bee b3">🐝</div>
 
   <header class="hero">
     <div class="solar">
@@ -371,10 +316,8 @@
       <div class="sun-glow"></div>
       <div class="mascot">🐝</div>
     </div>
-    <div><span class="badge">🚧 Under Construction 🚧</span></div>
     <h1 id="apiaryName">Ferg's Solar Bees</h1>
     <p class="tagline" id="tagline">Raw, local honey — straight from rural Missouri hives.</p>
-    <p class="launch-note" id="launchNote">Bee patient — we're still building the hive!</p>
   </header>
 
   <div class="drip"></div>
@@ -383,14 +326,12 @@
 
     <section class="card">
       <h2>🍯 About the Beekeeper</h2>
+      <figure class="card-photo">
+        <img src="images/hive-row.jpg" width="1400" height="700"
+             alt="A row of painted beehives stenciled FSB, lined up on a gravel bed at the edge of the woods">
+        <figcaption>The hive row</figcaption>
+      </figure>
       <div id="aboutBlurb"></div>
-      <p class="soft">More of the story is on the way — including the seasons of the hive and what makes this honey special.</p>
-    </section>
-
-    <section class="card">
-      <h2>🌻 The Honey Hobby</h2>
-      <p>From flower to frame to jar — every batch is tended by hand. Here's a taste of what's coming to this page:</p>
-      <p class="soft">• The seasons of the hive &nbsp;•&nbsp; Harvest &amp; bottling &nbsp;•&nbsp; Honey varieties &nbsp;•&nbsp; Why local honey matters</p>
     </section>
 
     <section class="card">
@@ -437,25 +378,17 @@
       <div class="contact-row" id="townRow">📍 <span id="townText"></span></div>
     </section>
 
-    <section class="card">
-      <div class="progress-label">Hive construction progress</div>
-      <div class="progress"><div class="progress-fill" id="progressFill"></div></div>
-      <p class="soft" style="margin-top:10px">The worker bees (okay, one bee 🐝) are on it.</p>
-    </section>
-
   </main>
 
   <footer>
     <p>🐝 <span id="footerName">Ferg's Solar Bees</span> 🐝</p>
-    <p>Made with <span class="heart">♥</span> for the best beekeeper around.</p>
   </footer>
 
 <script>
   // Apply the SITE config to the page
-  document.title = "Coming Soon — " + SITE.apiaryName;
+  document.title = SITE.apiaryName + " — Raw, Local Honey from " + SITE.town;
   document.getElementById("apiaryName").textContent = SITE.apiaryName;
   document.getElementById("tagline").textContent = SITE.tagline;
-  document.getElementById("launchNote").textContent = SITE.launchNote;
   document.getElementById("footerName").textContent = SITE.apiaryName;
   document.getElementById("townText").textContent = SITE.town;
 
@@ -518,11 +451,6 @@
     venmoLink.textContent = "@" + handle + " on Venmo";
     venmoRow.style.display = "flex";
   }
-
-  // animate the progress bar after load
-  window.addEventListener("load", () => {
-    setTimeout(() => { document.getElementById("progressFill").style.width = "35%"; }, 400);
-  });
 </script>
 </body>
 </html>
